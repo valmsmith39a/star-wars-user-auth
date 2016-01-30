@@ -22,6 +22,13 @@ function loginUser(e) {
   })
   .fail(function(err) {
     console.log(err);
+
+
+
+
+
+
+    
     
   });
 }
