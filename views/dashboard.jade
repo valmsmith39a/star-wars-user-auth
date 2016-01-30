@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+ h1#main-title Star Wars Super Avatars
+ h4 May the FORCE be with you.
+ a(href='/addItem') Add your avatar
+ <br>
+ <br>
+ textarea#input-text(rows='1', cols='17', onkeyup='searchByName()', placeholder='Search by name', value='')
+ <br>
+ <br>
+ table.table-hover
+  thead
+  tbody#avatars-list 
+
+block scripts
+ script(src="/js/dashboard.js")

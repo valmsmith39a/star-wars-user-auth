@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+ h1#add-item-title Add a character
+ h4 May the FORCE be with you. 
+ <br>
+ <br>
+ textarea#input-text(rows='1', cols='17', onkeyup='searchByName()', placeholder='Search by name', value='')
+ <br>
+ <br>
+ table.table-hover
+  thead
+  tbody#avatars-available-list 
+  
+block scripts
+ script(src="/js/addItem.js")
