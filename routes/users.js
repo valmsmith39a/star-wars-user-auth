@@ -13,9 +13,9 @@ var ref = new Firebase('https://user-auth-ch.firebaseio.com/');
 router.post('/register', function(req, res, next) {
   ref.createUser(req.body, function(err, userData) {
     if(err) return res.status(400).send(err);
-    debugger;
+    
     User.create(userData, function(err) {
-      debugger;
+      
       res.send();
     });
   });
@@ -25,7 +25,21 @@ router.post('/login', function(req, res, next) {
   ref.authWithPassword(req.body, function(err, authData) {
     if(err) return res.status(400).send(err);
 
-      /*
+    User.findOne({uid: authData.uid}, function(err, user) {
+      var token = user.generateToken();
+      res.cookie('mytoken', token).send();
+    });
+  });
+});
+
+
+/*
+router.post('/login', function(req, res, next) {
+  ref.authWithPassword(req.body, function(err, authData) {
+    debugger;
+    if(err) return res.status(400).send(err);
+
+      
     {
       var ref = new Firebase("https://user-auth-ch.firebaseio.com/");
         ref.changePassword({
@@ -52,7 +66,7 @@ router.post('/login', function(req, res, next) {
     return res.status(400).send(err);
 
     }
-    */
+    
     
     User.findOne({uid: authData.uid}, function(err, user) {
       var token = user.generateToken();
@@ -60,6 +74,7 @@ router.post('/login', function(req, res, next) {
     });
   });
 });
+*/
 
 router.get('/logout', function(req, res, next) {
   res.clearCookie('mytoken').redirect('/');
