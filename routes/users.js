@@ -13,7 +13,9 @@ var ref = new Firebase('https://user-auth-ch.firebaseio.com/');
 router.post('/register', function(req, res, next) {
   ref.createUser(req.body, function(err, userData) {
     if(err) return res.status(400).send(err);
+    debugger;
     User.create(userData, function(err) {
+      debugger;
       res.send();
     });
   });
@@ -22,6 +24,36 @@ router.post('/register', function(req, res, next) {
 router.post('/login', function(req, res, next) {
   ref.authWithPassword(req.body, function(err, authData) {
     if(err) return res.status(400).send(err);
+
+      /*
+    {
+      var ref = new Firebase("https://user-auth-ch.firebaseio.com/");
+        ref.changePassword({
+        email: "bobtony@firebase.com",
+        oldPassword: "correcthorsebatterystaple",
+        newPassword: "shinynewpassword"
+        }, function(error) {
+        if (error) {
+          switch (error.code) {
+            case "INVALID_PASSWORD":
+              console.log("The specified user account password is incorrect.");
+            break;
+            case "INVALID_USER":
+              console.log("The specified user account does not exist.");
+            break;
+            default:
+            console.log("Error changing password:", error);
+        }
+        } else {
+        console.log("User password changed successfully!");
+    }
+  });
+
+    return res.status(400).send(err);
+
+    }
+    */
+    
     User.findOne({uid: authData.uid}, function(err, user) {
       var token = user.generateToken();
       res.cookie('mytoken', token).send();

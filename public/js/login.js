@@ -18,11 +18,9 @@ function loginUser(e) {
 
   $.post('/users/login', {email: email, password: password})
   .success(function(data) {
-    debugger;
     location.href = '/dashboard';
   })
   .fail(function(err) {
-    debugger;
     console.log(err);
     
   });
