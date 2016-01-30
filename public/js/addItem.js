@@ -2,12 +2,21 @@ $(document).ready(init);
 
 var itemsToDisplayG = [];
 var arrayOfRowContainersObjectsG = [];
+var curUserG = {};
 
 function init(){
+	getCurUser();
 	getItems();
 	$('#avatars-available-list').on('click', '.add-btn', postItems);
 }
 
+function getCurUser(){
+	$.get( '/starwars/curuser', function( data ) {
+		curUserG = data; 
+  });
+}
+
+/* Get set of 10 characters. Different set each time. */
 function getItems(){
 	$.get( '/starwars/avatars', function( data ) {
 		itemsToDisplayG = JSON.parse(data).results;
@@ -17,12 +26,11 @@ function getItems(){
 
 function postItems(e){
 	e.preventDefault();
-  
   var indexOfItem = $(this).closest('.row-container').index() - 1;
   var objectToAdd = itemsToDisplayG[indexOfItem];
 
 	$.ajax({
-  	method: 'PUT',
+  	method: 'POST',
  		url: '/starwars',
  		data: objectToAdd
 		})

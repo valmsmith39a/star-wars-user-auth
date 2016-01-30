@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
+
 
 var authMiddleware = require('../config/auth');
 
@@ -13,22 +15,35 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-	console.log('Inside register route');
   res.render('register');
 });
 
+router.use(authMiddleware);
+
 router.get('/dashboard', function(req, res, next) {
-	console.log('Inside dashboard route in index.js router file');
   res.render('dashboard');
 });
 
 router.get('/addItem', function(req, res, next) {
-	console.log('Inside add tiem route in index.js router file');
   res.render('addItem');
 });
 
+/* GET item to edit page */
+router.get('/editItem/:indexOfItem', function(req, res, next) {
+  // Obtain the id of the object to display details
+  // Get the object to display
+  console.log('inside editItem route in index.js items id', req.params.indexOfItem);
+  User.findById(req.user._id, function(err, user){
+    if(err) res.status(400).send(err);
+    console.log('inside edit item', user);
+    console.log('array of items', user.starwars);
+    var arrayOfObjects = user.starwars; 
+    var starWarsChar = arrayOfObjects[req.params.indexOfItem];
+    res.render('editItem', {itemIndex:req.params.indexOfItem, name:starWarsChar.name, height:starWarsChar.height, mass:starWarsChar.mass, birthYear:starWarsChar.birth_year});
+  });
+});
+
 router.get('/secret', authMiddleware, function(req, res, next) {
-  console.log('req.user:', req.user);
   res.send('Wooo!  Secret stuff!!!');
 });
 

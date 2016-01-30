@@ -1,0 +1,24 @@
+extends layout
+
+block content
+ h3#edit-details  Edit character details
+ h4#edit Name:
+ input#name(type='text', value='#{name}')
+ h4#edit Height:
+ input#height(type='text', value='#{height}')
+ h4#edit Mass:
+ input#mass(type='text', value='#{mass}')
+ h4#edit Birth Year:
+ input#birth-year(type='text', value='#{birthYear}')
+ <br>
+ <br>
+ button.btn.btn-primary.save-button(type='button') Save Edits
+ <br>
+ <br>
+ a#back-link(href='/dashboard') Back
+ <br>
+ <br>
+ #itemIndex(data-itemindex='#{itemIndex}')
+
+block scripts
+  script(src="/js/editItem.js")

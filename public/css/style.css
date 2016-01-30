@@ -1,8 +1,72 @@
-.name-title{
+body {
+    background-image: url("http://media.moddb.com/images/members/1/414/413519/star-wars-wallpaper.jpg");
+		background-repeat: no-repeat; 
+		color:yellow;
+}
+
+#name, #height, #mass, #birth-year {
+	color:black;
+}
+
+#title-star-wars {
+	font-size: 60px;
+	color:yellow;
+}
+
+#tag-line {
+	font-size: 30px;
 	color:red;
+}
+
+.name-title, .height-title, .mass-title{
+	color:red;
+	font-size:25px;
+	background-color:white;
+	opacity:.6;
+}
+
+.name-col, .height-col, .mass-col, .edit-col, .delete-col {
+	color: yellow;
 	font-size:20px;
+	background-color:purple;
+	opacity:.6;
 }
 
 #add-item-link {
-	font-size:20px;
+	font-size:30px;
+	color:red;
+	background-color:purple;
+	opacity:.6;
 }
+
+#back-link {
+	color:yellow;
+	font-size:20px;
+	background-color:purple;
+	opacity:.8;
+}
+
+#edit-details{
+	color:yellow;
+	font-size:30px;
+	background-color:purple;
+	opacity:.8;
+}
+
+#edit{
+	color:yellow;
+	width:100px;
+	font-size:18px;
+	background-color:purple;
+	opacity:.8;
+}
+
+#login-text {
+	color:yellow;
+	width:90px;
+	font-size:18px;
+	/*background-color:purple;*/
+	opacity:.8;
+
+}
+

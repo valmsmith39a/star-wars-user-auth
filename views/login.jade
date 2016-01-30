@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  h1 Login
+  h1#login-text Login
   form
     .form-group
-      label(for='email') Email address
+      label#login-text(for='email') Email address
       input#email.form-control(type='email', placeholder='Email')
     .form-group
-      label(for='password') Password
+      label#login-text(for='password') Password
       input#password.form-control(type='password', placeholder='Password')
     button.btn.btn-default(type='submit') Login
 

@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', require('./routes/users'));
 app.use('/', require('./routes/index'));
-app.use('/pokemon', require('./routes/pokemon'));
+//app.use('/pokemon', require('./routes/pokemon'));
 app.use('/starwars', require('./routes/starwars'));
 
 

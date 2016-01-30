@@ -28,8 +28,7 @@ function registerUser(e) {
     location.href = '/login';
   })
   .fail(function(err) {
-    debugger;
-    alert('Error.  Check console.');
+    return alert('Registration error');
     console.log('err:', err);
   });
 }
